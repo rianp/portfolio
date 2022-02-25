@@ -22,4 +22,38 @@ def create
     end
   end
   
+  def edit
+    @gallery_item = Gallery.find(params[:id])
+  end
+
+  # PATCH/PUT /galleries/1 or /galleries/1.json
+  def update
+    @gallery_item = Gallery.find(params[:id])
+    
+    respond_to do |format|
+      if @gallery_item.update(params.require(:gallery).permit(:title, :subtitle, :body))
+        format.html { redirect_to galleries_path, notice: 'The record successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
+
+  def show
+    @gallery_item = Gallery.find(params[:id])
+  end
+
+  def destroy
+    # Perform the lookup
+    @gallery_item = Gallery.find(params[:id])
+
+    # Destroy/delete the record
+    @gallery_item.destroy
+
+    # Redirect
+    respond_to do |format|
+      format.html { redirect_to galleries_url, notice: 'Record was removed.' }
+    end
+  end
+
 end
