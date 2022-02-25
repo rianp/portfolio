@@ -3,6 +3,10 @@ class GalleriesController < ApplicationController
         @gallery_items = Gallery.all 
     end
 
+    def angular
+        @angular_gallery_items = Gallery.angular 
+    end
+
     def new
         @gallery_item = Gallery.new
     end
