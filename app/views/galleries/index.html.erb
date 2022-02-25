@@ -4,6 +4,6 @@
     <p><%= gallery_item.title %></p>
     <p><%= gallery_item.subtitle %></p>
     <p><%= gallery_item.body %></p>
-    <%= image_tag gallery_item.thumb_image %>
+    <%= image_tag gallery_item.thumb_image unless gallery_item.thumb_image.nil? %>
 
 <% end %>
